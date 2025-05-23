@@ -7,7 +7,10 @@ JSONH provides a much more elegant way to write JSON that's designed for humans 
 
 Since JSONH is compatible with JSON, any JSONH syntax can be represented with equivalent JSON.
 
-JsonhCli is a command-line interface for converting JSONH to JSON using [JsonhCs](https://github.com/jsonh-org/Jsonhcs).
+## JsonhCli
+
+JsonhCli is a command-line interface for converting [JSONH v1](https://github.com/jsonh-org/Jsonh)
+to JSON using [JsonhCs](https://github.com/jsonh-org/Jsonhcs).
 
 ## Usage
 
