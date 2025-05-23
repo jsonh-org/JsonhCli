@@ -33,7 +33,7 @@ jobs:
       - run: dotnet publish -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }}
       - uses: actions/upload-artifact@v4
         with:
-          name: app-${{ matrix.target.rid }}
+          name: JsonhCli-${{ matrix.target.rid }}
           path: ./publish/${{ matrix.target.rid }}
 
   merge:
