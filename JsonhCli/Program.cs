@@ -42,7 +42,7 @@ public static class Program {
             string Json = Node.ToJsonString(Pretty ? JsonhReader.PrettyJson : JsonhReader.MiniJson);
             // Write output
             if (OutputPath is not null) {
-                // Validate output
+                // Validate output path
                 if (OutputPath is null || !Directory.Exists(Path.GetDirectoryName(OutputPath))) {
                     Console.WriteLine($"The directory of the output file does not exist: \"{OutputPath}\"");
                     return;
