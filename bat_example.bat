@@ -1,0 +1,1 @@
+dotnet run --project "JsonhCli" -- --input-path "Example/example.jsonh" --output-path "Example/example.json" --pretty
