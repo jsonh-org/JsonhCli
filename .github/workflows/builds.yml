@@ -35,3 +35,14 @@ jobs:
         with:
           name: app-${{ matrix.target.rid }}
           path: ./publish/${{ matrix.target.rid }}
+
+  merge:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: JsonhCli
+          pattern: JsonhCli-*
+          delete-merged: true
