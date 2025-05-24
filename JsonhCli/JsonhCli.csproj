@@ -8,6 +8,7 @@
 
   <PropertyGroup>
     <PublishAot>true</PublishAot>
+    <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
   <PropertyGroup>
