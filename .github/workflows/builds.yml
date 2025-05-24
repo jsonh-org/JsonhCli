@@ -26,24 +26,27 @@ jobs:
     
     runs-on: ${{ matrix.target.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      # Clone this repository
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Setup .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-      - run: dotnet restore
-      - run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }} -p:PublishSingleFile=false
-      - uses: actions/upload-artifact@v4
+
+      # Download dependencies
+      - name: Download dependencies
+        run: dotnet restore
+
+      # Build app
+      - name: Build app
+        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }} -p:PublishSingleFile=false
+
+      # Upload the build
+      - name: Upload build
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
           path: ./publish/${{ matrix.target.rid }}
-
-  merge:
-    runs-on: ubuntu-24.04
-    needs: build
-    steps:
-      - name: Merge Artifacts
-        uses: actions/upload-artifact/merge@v4
-        with:
-          name: ${{ env.PROJECT_NAME }}
-          pattern: ${{ env.PROJECT_NAME }}-*
-          delete-merged: true
