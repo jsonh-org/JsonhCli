@@ -42,14 +42,14 @@ jobs:
 
       # Build app
       - name: Build app
-        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }}/${{ matrix.target.rid }} -p:PublishSingleFile=true
+        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}/${{ matrix.target.rid }} -p:PublishSingleFile=true
 
       # Upload the build
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
-          path: ./publish/${{ matrix.target.rid }}
+          path: ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
 
   # Merges all the build artifacts together into a single artifact.
   # If you comment out this step, all the builds will be uploaded individually.
