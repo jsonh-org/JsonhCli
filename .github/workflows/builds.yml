@@ -6,6 +6,7 @@ on:
   merge_group:
 
 env:
+  PROJECT_NAME: JsonhCli
   DOTNET_VERSION: 9.x
 
 jobs:
@@ -30,10 +31,10 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - run: dotnet restore
-      - run: dotnet publish -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }}
+      - run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }}
       - uses: actions/upload-artifact@v4
         with:
-          name: JsonhCli-${{ matrix.target.rid }}
+          name: ${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
           path: ./publish/${{ matrix.target.rid }}
 
   merge:
@@ -43,6 +44,6 @@ jobs:
       - name: Merge Artifacts
         uses: actions/upload-artifact/merge@v4
         with:
-          name: JsonhCli
-          pattern: JsonhCli-*
+          name: ${{ env.PROJECT_NAME }}
+          pattern: ${{ env.PROJECT_NAME }}-*
           delete-merged: true
