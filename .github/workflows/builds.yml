@@ -31,7 +31,7 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
       - run: dotnet restore
-      - run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }}
+      - run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ matrix.target.rid }} -p:PublishSingleFile=false
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
