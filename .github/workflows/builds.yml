@@ -42,7 +42,7 @@ jobs:
 
       # Build app
       - name: Build app
-        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}/${{ matrix.target.rid }} -p:PublishSingleFile=true
+        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }} -p:PublishSingleFile=true
 
       # Upload the build
       - name: Upload build
