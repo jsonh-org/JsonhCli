@@ -71,7 +71,7 @@ public static class Program {
                     }
                     // Log output
                     else {
-                        Console.WriteLine(Json.ReplaceLineEndings());
+                        Console.WriteLine(Json.ReplaceLineEndings()); // Console doesn't display '\n' properly on Windows
                     }
                 }
                 else {
