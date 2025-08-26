@@ -22,12 +22,13 @@ Usage:
   JsonhCli [options]
 
 Options:
-  --input-path <input-path>    The path of the JSONH file to input
-  --input <input>              The JSONH string to input
-  --output-path <output-path>  The path of the JSON file to output. If null, logs the output
-  --pretty                     Whether to indent the outputted JSON
-  --version                    Show version information
-  -?, -h, --help               Show help and usage information
+  -?, -h, --help              Show help and usage information
+  --version                   Show version information
+  --input-path                The path of the JSONH file to input
+  --input                     The JSONH string to input
+  --output-path               The path of the JSON file to output. If null, logs the output
+  --pretty                    Whether to indent the outputted JSON
+  --lang-version <Latest|V1>  The major version of the JSONH specification to use
 ```
 
 ### Example

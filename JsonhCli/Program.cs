@@ -22,12 +22,16 @@ public static class Program {
         Option<bool> PrettyOption = new("--pretty") {
             Description = "Whether to indent the outputted JSON",
         };
+        Option<JsonhVersion> LangVersionOption = new("--lang-version") {
+            Description = "The major version of the JSONH specification to use",
+        };
 
         RootCommand RootCommand = new("The JSONH Command Line Interface") {
             InputPathOption,
             InputOption,
             OutputPathOption,
             PrettyOption,
+            LangVersionOption,
         };
 
         RootCommand.SetAction(int (ParseResult ParseResult) => {
@@ -35,6 +39,7 @@ public static class Program {
             string? Input = ParseResult.GetValue(InputOption);
             string? OutputPath = ParseResult.GetValue(OutputPathOption);
             bool Pretty = ParseResult.GetValue(PrettyOption);
+            JsonhVersion LangVersion = ParseResult.GetValue(LangVersionOption);
 
             // JSONH file to JSON file
             if (InputPath is not null || Input is not null) {
@@ -55,8 +60,13 @@ public static class Program {
                     }
                 }
 
+                // Create JSONH options
+                JsonhReaderOptions JsonhReaderOptions = new() {
+                    Version = LangVersion,
+                };
+
                 // Parse JSONH
-                if (JsonhReader.ParseNode(Input!).TryGetError(out Error Error, out JsonNode? Node)) {
+                if (JsonhReader.ParseNode(Input!, JsonhReaderOptions).TryGetError(out Error Error, out JsonNode? Node)) {
                     Console.WriteLine($"Error parsing JSONH file: \"{Error.Message}\"");
                     return 1;
                 }
