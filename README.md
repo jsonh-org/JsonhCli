@@ -1,5 +1,7 @@
 <img src="https://github.com/jsonh-org/Jsonh/blob/main/IconUpscaled.png?raw=true" width=180>
 
+[![C#](https://img.shields.io/github/release/jsonh-org/JsonhCli.svg?label=c%23)](https://github.com/jsonh-org/JsonhCli/releases)
+
 **JSON for Humans.**
 
 JSON is great. Until you miss that trailing comma... or want to use comments. What about multiline strings?
