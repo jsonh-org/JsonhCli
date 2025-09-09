@@ -23,7 +23,7 @@ jobs:
             { rid: osx-x64, os: macos-latest },
             { rid: osx-arm64, os: macos-latest },
           ]
-
+    
     runs-on: ${{ matrix.target.os }}
     steps:
       # Clone this repository
@@ -50,16 +50,3 @@ jobs:
         with:
           name: ${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
           path: ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
-
-  # Merges all the build artifacts together into a single artifact.
-  # If you comment out this step, all the builds will be uploaded individually.
-  merge:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Merge Artifacts
-        uses: actions/upload-artifact/merge@v4
-        with:
-          name: JsonhCli
-          pattern: JsonhCli-*
-          delete-merged: true
