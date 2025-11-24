@@ -63,6 +63,7 @@ public static class Program {
                 // Create JSONH options
                 JsonhReaderOptions JsonhReaderOptions = new() {
                     Version = LangVersion,
+                    ParseSingleElement = true,
                 };
 
                 // Parse JSONH
