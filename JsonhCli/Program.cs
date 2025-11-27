@@ -45,7 +45,7 @@ public static class Program {
             if (InputPath is not null || Input is not null) {
                 // Ensure unambiguous input
                 if (InputPath is not null && Input is not null) {
-                    Console.WriteLine("Cannot pass both an input file and an input string.");
+                    Console.Error.WriteLine("Cannot pass both an input file and an input string.");
                     return 1;
                 }
 
@@ -55,7 +55,7 @@ public static class Program {
                         Input = File.ReadAllText(InputPath);
                     }
                     catch (Exception) {
-                        Console.WriteLine("The input file is invalid.");
+                        Console.Error.WriteLine("The input file is invalid.");
                         return 1;
                     }
                 }
@@ -68,7 +68,7 @@ public static class Program {
 
                 // Parse JSONH
                 if (JsonhReader.ParseNode(Input!, JsonhReaderOptions).TryGetError(out Error Error, out JsonNode? Node)) {
-                    Console.WriteLine($"Error parsing JSONH file: \"{Error.Message}\"");
+                    Console.Error.WriteLine($"Error parsing JSONH file: \"{Error.Message}\"");
                     return 1;
                 }
 
@@ -79,7 +79,7 @@ public static class Program {
                 if (OutputPath is not null) {
                     // Validate output path
                     if (OutputPath is null || !Directory.Exists(Path.GetDirectoryName(OutputPath))) {
-                        Console.WriteLine($"The directory of the output file does not exist: \"{OutputPath}\"");
+                        Console.Error.WriteLine($"The directory of the output file does not exist: \"{OutputPath}\"");
                         return 1;
                     }
                     File.WriteAllText(OutputPath, Json);
@@ -92,7 +92,7 @@ public static class Program {
             }
             // Invalid command arguments
             else {
-                Console.WriteLine("Invalid arguments.");
+                Console.Error.WriteLine("Invalid arguments.");
                 return 1;
             }
         });
