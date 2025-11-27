@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JsonhCs" Version="4.3.0" />
+    <PackageReference Include="JsonhCs" Version="4.4.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0" />
   </ItemGroup>
 </Project>
