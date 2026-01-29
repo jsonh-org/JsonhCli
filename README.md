@@ -12,7 +12,7 @@ Since JSONH is compatible with JSON, any JSONH syntax can be represented with eq
 ## JsonhCli
 
 JsonhCli is a command-line interface for converting [JSONH V1 & V2](https://github.com/jsonh-org/Jsonh)
-to JSON using [JsonhCs](https://github.com/jsonh-org/Jsonhcs).
+to JSON using [JsonhCs](https://github.com/jsonh-org/JsonhCs).
 
 ## Usage
 
