@@ -12,18 +12,31 @@ public static class Program {
     public static int Main(string[] Args) {
         Option<string?> InputPathOption = new("--input-path") {
             Description = "The path of the JSONH file to input",
+            DefaultValueFactory = _ => null,
         };
         Option<string?> InputOption = new("--input") {
             Description = "The JSONH string to input",
+            DefaultValueFactory = _ => null,
         };
         Option<string?> OutputPathOption = new("--output-path") {
             Description = "The path of the JSON file to output. If null, logs the output",
+            DefaultValueFactory = _ => null,
         };
         Option<bool> PrettyOption = new("--pretty") {
             Description = "Whether to indent the outputted JSON",
+            DefaultValueFactory = _ => false,
         };
         Option<JsonhVersion> LangVersionOption = new("--lang-version") {
             Description = "The major version of the JSONH specification to use",
+            DefaultValueFactory = _ => JsonhVersion.Latest,
+        };
+        Option<int> MaxDepthOption = new("--max-depth") {
+            Description = "The maximum recursion depth when reading JSONH",
+            DefaultValueFactory = _ => 64,
+        };
+        Option<bool> BigNumbersOption = new("--big-numbers") {
+            Description = "Whether to parse numbers outside the range/precision of a double",
+            DefaultValueFactory = _ => false,
         };
 
         RootCommand RootCommand = new("The JSONH Command Line Interface") {
@@ -32,6 +45,8 @@ public static class Program {
             OutputPathOption,
             PrettyOption,
             LangVersionOption,
+            MaxDepthOption,
+            BigNumbersOption,
         };
 
         RootCommand.SetAction(int (ParseResult ParseResult) => {
@@ -40,6 +55,8 @@ public static class Program {
             string? OutputPath = ParseResult.GetValue(OutputPathOption);
             bool Pretty = ParseResult.GetValue(PrettyOption);
             JsonhVersion LangVersion = ParseResult.GetValue(LangVersionOption);
+            int MaxDepth = ParseResult.GetValue(MaxDepthOption);
+            bool BigNumbers = ParseResult.GetValue(BigNumbersOption);
 
             // JSONH file to JSON file
             if (InputPath is not null || Input is not null) {
@@ -64,6 +81,8 @@ public static class Program {
                 JsonhReaderOptions JsonhReaderOptions = new() {
                     Version = LangVersion,
                     ParseSingleElement = true,
+                    MaxDepth = MaxDepth,
+                    BigNumbers = BigNumbers,
                 };
 
                 // Parse JSONH
