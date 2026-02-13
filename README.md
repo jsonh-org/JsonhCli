@@ -1,6 +1,6 @@
 <img src="https://github.com/jsonh-org/Jsonh/blob/main/IconUpscaled.png?raw=true" width=180>
 
-[![C#](https://img.shields.io/github/release/jsonh-org/JsonhCli.svg?label=c%23)](https://github.com/jsonh-org/JsonhCli/releases)
+[![NuGet](https://img.shields.io/nuget/v/JsonhCli.svg)](https://www.nuget.org/packages/JsonhCli)
 
 **JSON for Humans.**
 
