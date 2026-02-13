@@ -14,6 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        framework: [net10.0]
         target:
           [
             { rid: win-x64, os: windows-latest },
@@ -42,7 +43,17 @@ jobs:
 
       # Build app
       - name: Build app
-        run: dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj -c Release -r ${{ matrix.target.rid }} --self-contained true -o ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }} -p:PublishSingleFile=true -p:PublishAot=true -p:PublishTrimmed=true -p:GeneratePackageOnBuild=false
+        run: >-
+          dotnet publish ${{ env.PROJECT_NAME }}/${{ env.PROJECT_NAME }}.csproj
+          -c Release
+          -r ${{ matrix.target.rid }}
+          --self-contained true
+          -o ./publish/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}/${{ env.PROJECT_NAME }}-${{ matrix.target.rid }}
+          -p:PublishSingleFile=true
+          -p:PublishAot=true
+          -p:PublishTrimmed=true
+          -p:GeneratePackageOnBuild=false
+          -f ${{ matrix.framework }}
 
       # Upload the build
       - name: Upload build
