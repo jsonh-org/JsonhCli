@@ -9,7 +9,7 @@
 
     <PropertyGroup>
         <PackAsTool>true</PackAsTool>
-        <ToolCommandName>jsonh</ToolCommandName>
+        <ToolCommandName>JsonhCli</ToolCommandName>
 
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
