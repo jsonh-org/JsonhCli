@@ -8,11 +8,6 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <!--<PublishAot>true</PublishAot>-->
-        <!--<PublishTrimmed>true</PublishTrimmed>-->
-    </PropertyGroup>
-
-    <PropertyGroup>
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>jsonh</ToolCommandName>
 
