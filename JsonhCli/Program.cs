@@ -21,9 +21,9 @@ public static class Program {
             Description = "The path of the JSON file to output. If null, logs the output",
             DefaultValueFactory = _ => null,
         };
-        Option<bool> PrettyOption = new("--pretty") {
-            Description = "Whether to indent the outputted JSON",
-            DefaultValueFactory = _ => false,
+        Option<string?> IndentOption = new("--indent") {
+            Description = "The indentation to pretty-print the output. If null, the output is minified.",
+            DefaultValueFactory = _ => null,
         };
         Option<JsonhVersion> LangVersionOption = new("--lang-version") {
             Description = "The major version of the JSONH specification to use",
@@ -42,7 +42,7 @@ public static class Program {
             InputPathOption,
             InputOption,
             OutputPathOption,
-            PrettyOption,
+            IndentOption,
             LangVersionOption,
             MaxDepthOption,
             BigNumbersOption,
@@ -52,7 +52,7 @@ public static class Program {
             string? InputPath = ParseResult.GetValue(InputPathOption);
             string? Input = ParseResult.GetValue(InputOption);
             string? OutputPath = ParseResult.GetValue(OutputPathOption);
-            bool Pretty = ParseResult.GetValue(PrettyOption);
+            string? Indent = ParseResult.GetValue(IndentOption);
             JsonhVersion LangVersion = ParseResult.GetValue(LangVersionOption);
             int MaxDepth = ParseResult.GetValue(MaxDepthOption);
             bool BigNumbers = ParseResult.GetValue(BigNumbersOption);
@@ -85,7 +85,6 @@ public static class Program {
                 };
 
                 // Parse JSONH
-                string? Indent = Pretty ? "    " : null;
                 using JsonhReader Reader = new(Input!, JsonhReaderOptions);
                 if (Reader.ParseJson(Indent: Indent).TryGetError(out Error Error, out string? Json)) {
                     Console.Error.WriteLine($"Error parsing JSONH file: \"{Error.Message}\"");
