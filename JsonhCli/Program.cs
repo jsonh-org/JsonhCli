@@ -1,4 +1,3 @@
-using System.Text.Json.Nodes;
 using System.CommandLine;
 using JsonhCs;
 using ResultZero;
@@ -86,13 +85,12 @@ public static class Program {
                 };
 
                 // Parse JSONH
-                if (JsonhReader.ParseNode(Input!, JsonhReaderOptions).TryGetError(out Error Error, out JsonNode? Node)) {
+                string? Indent = Pretty ? "    " : null;
+                using JsonhReader Reader = new(Input!, JsonhReaderOptions);
+                if (Reader.ParseJson(Indent: Indent).TryGetError(out Error Error, out string? Json)) {
                     Console.Error.WriteLine($"Error parsing JSONH file: \"{Error.Message}\"");
                     return 1;
                 }
-
-                // Convert to JSON
-                string Json = Node.ToJsonString(Pretty ? JsonhReader.PrettyJson : JsonhReader.MiniJson);
 
                 // Write output
                 if (OutputPath is not null) {
