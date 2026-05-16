@@ -22,7 +22,7 @@ public static class Program {
             DefaultValueFactory = _ => null,
         };
         Option<string?> IndentOption = new("--indent") {
-            Description = "The indentation to pretty-print the output. If null, the output is minified.",
+            Description = "The indentation to pretty-print the output. If null, the output is minified",
             DefaultValueFactory = _ => null,
         };
         Option<JsonhVersion> LangVersionOption = new("--lang-version") {

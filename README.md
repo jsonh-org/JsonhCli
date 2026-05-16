@@ -27,7 +27,7 @@ Options:
   --input-path <input-path>      The path of the JSONH file to input
   --input <input>                The JSONH string to input
   --output-path <output-path>    The path of the JSON file to output. If null, logs the output
-  --indent <indent>              The indentation to pretty-print the output. If null, the output is minified.
+  --indent <indent>              The indentation to pretty-print the output. If null, the output is minified
   --lang-version <Latest|V1|V2>  The major version of the JSONH specification to use [default: Latest]
   --max-depth <max-depth>        The maximum recursion depth when reading JSONH [default: 64]
   --big-numbers                  Whether to parse numbers outside the range/precision of a double
