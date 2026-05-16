@@ -27,7 +27,7 @@ Options:
   --input-path <input-path>      The path of the JSONH file to input
   --input <input>                The JSONH string to input
   --output-path <output-path>    The path of the JSON file to output. If null, logs the output
-  --pretty                       Whether to indent the outputted JSON
+  --indent <indent>              The indentation to pretty-print the output. If null, the output is minified.
   --lang-version <Latest|V1|V2>  The major version of the JSONH specification to use [default: Latest]
   --max-depth <max-depth>        The maximum recursion depth when reading JSONH [default: 64]
   --big-numbers                  Whether to parse numbers outside the range/precision of a double
@@ -39,10 +39,10 @@ Options:
 
 Parse JSONH in `example.jsonh` and write indented JSON to `example.json`:
 ```
-JsonhCli --input-path "example.jsonh" --output-path "example.json" --pretty
+JsonhCli --input-path "example.jsonh" --output-path "example.json" --indent "    "
 ```
 
 Parse JSONH string and output indented JSON:
 ```
-JsonhCli --input "[hello, world]" --pretty
+JsonhCli --input "[hello, world]" --indent "    "
 ```
