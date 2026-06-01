@@ -11,9 +11,9 @@
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>JsonhCli</ToolCommandName>
 
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <Title>JSONH CLI</Title>
         <Description>JSON for Humans as a Command Line Interface.</Description>
         <PackageProjectUrl>https://github.com/jsonh-org/JsonhCli</PackageProjectUrl>
