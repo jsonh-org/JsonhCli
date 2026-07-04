@@ -8,8 +8,8 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PublishAot>true</PublishAot>
-        <PublishTrimmed>true</PublishTrimmed>
+        <IsAotCompatible>true</IsAotCompatible>
+        <isTrimmable>true</isTrimmable>
     </PropertyGroup>
 
     <PropertyGroup>
