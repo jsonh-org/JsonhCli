@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <VersionPrefix>7.6</VersionPrefix>
+        <VersionPrefix>8.0</VersionPrefix>
         <OutputType>Exe</OutputType>
         <TargetFrameworks>net10.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
