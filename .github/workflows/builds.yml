@@ -7,14 +7,14 @@ on:
 
 env:
   PROJECT_NAME: JsonhCli
-  DOTNET_VERSION: 10.x
+  DOTNET_VERSION: 11.x
 
 jobs:
   build:
     strategy:
       fail-fast: false
       matrix:
-        framework: [net10.0]
+        framework: [net11.0]
         target:
           [
             { rid: win-x64, os: windows-latest },
@@ -29,11 +29,11 @@ jobs:
     steps:
       # Clone this repository
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       # Setup .NET
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
