@@ -1,1 +1,1 @@
-dotnet run --project "JsonhCli" --framework net10.0 -- --input-path "Example/example.jsonh" --output-path "Example/example.json" --indent "    "
+dotnet run --project "JsonhCli" --framework net11.0 -- --input-path "Example/example.jsonh" --output-path "Example/example.json" --indent "    "
